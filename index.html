@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Premium Membership Validation</title>
+</head>
+<body style="background-color: aqua; color:black;">
+
+  <h2>Premium Membership Activation</h2>
+
+  <p style="background-color: aqua;">Open the browser console to see the results, on your browser press ctrl+shift+i to open your inspect page, then go to console on the right side</p>
+
+  <script>
+    // Variable to track successful activations
+    let successfulActivations = 0;
+
+    function canActivateMembership(points, membershipStatus, fullName) {
+      if (
+        points >= 100 &&
+        (membershipStatus === "silver" || membershipStatus === "gold") &&
+        fullName !== ""
+      ) {
+        let bonusPoints = points + 10;
+        successfulActivations += 1;
+        return `Congratulations, ${fullName}! Your membership is now active with ${bonusPoints} bonus points.`;
+      } else {
+        return "Activation failed.";
+      }
+    }
+
+    // Test the function
+    console.log(canActivateMembership(120, "gold", "Alice")); // Should succeed
+    console.log(canActivateMembership(80, "silver", "Bob"));  // Should fail
+    console.log(canActivateMembership(150, "bronze", "Eve")); // Should fail
+    console.log("Total activations: " + successfulActivations); // Track successful ones
+  </script>
+
+</body>
+</html>
